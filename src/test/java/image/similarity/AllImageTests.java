@@ -5,6 +5,6 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ ImagePHashTest.class, })
+@SuiteClasses({ ImagePHashTest.class, ImgHistogramTest.class })
 public class AllImageTests {
 }

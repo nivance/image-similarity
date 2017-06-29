@@ -83,7 +83,6 @@ public class ImagePHash {
 		 * frequencies and scalars. While JPEG uses an 8x8 DCT, this algorithm
 		 * uses a 32x32 DCT.
 		 */
-		long start = System.currentTimeMillis();
 		double[][] dctVals = applyDCT(vals);
 
 		/*
@@ -171,18 +170,10 @@ public class ImagePHash {
 		return F;
 	}
 	
-//	public int distance(BufferedImage srcImage, BufferedImage canImage) {
-//		String imgStr = this.getHash(srcImage);
-//		
-//		
-//		return 0;
-//	}
-	
 	/**
-	 * 
 	 * @param srcUrl
 	 * @param canUrl
-	 * @return 	值越小相识度越高，10之内可以认为是一张图片
+	 * @return 	值越小相识度越高，10之内可以简单判断这两张图片内容一致
 	 * @throws Exception 
 	 * @throws  
 	 */
@@ -195,7 +186,7 @@ public class ImagePHash {
 	/**
 	 * @param srcFile
 	 * @param canFile
-	 * @return 值越小相识度越高，10之内可以认为是一张图片
+	 * @return 值越小相识度越高，10之内可以简单判断这两张图片内容一致
 	 * @throws Exception
 	 */
 	public int distance(File srcFile, File canFile) throws Exception {
