@@ -1,9 +1,9 @@
 # ImageSimilarity
 计算图片相似度的应用很广泛，如google、baidu、360等搜索引擎以图搜图的功能就是其典型应用。
 
-### 感知哈希算法"（Perceptual hash algorithm）
+### 感知哈希算法（Perceptual hash algorithm）
 
-那这种技术的原理是什么呢？根据Neal Krawetz博士的解释，原理非常简单易懂。我们可以用一个快速算法，就达到基本的效果。这里的关键技术叫做**"感知哈希算法"（Perceptual hash algorithm）**，它的作用是对每张图片生成一个"指纹"（fingerprint）字符串，然后比较不同图片的指纹。结果越接近，就说明图片越相似。下面是一个最简单的实现：
+那这种技术的原理是什么呢？根据Neal Krawetz博士的解释，原理非常简单易懂。我们可以用一个快速算法，就达到基本的效果。这里的关键技术叫做**感知哈希算法（Perceptual hash algorithm）**，它的作用是对每张图片生成一个"指纹"（fingerprint）字符串，然后比较不同图片的指纹。结果越接近，就说明图片越相似。下面是一个最简单的实现：
 
 * 第一步，缩小尺寸。将图片缩小到8x8的尺寸，总共64个像素。这一步的作用是去除图片的细节，只保留结构、明暗等基本信息，摒弃不同尺寸、比例带来的图片差异。
 * 第二步，简化色彩。将缩小后的图片，转为64级灰度。也就是说，所有像素点总共只有64种颜色。
@@ -11,13 +11,13 @@
 * 第四步，比较像素的灰度。将每个像素的灰度，与平均值进行比较。大于或等于平均值，记为1；小于平均值，记为0。
 * 第五步，计算哈希值。将上一步的比较结果，组合在一起，就构成了一个64位的整数，这就是这张图片的指纹。组合的次序并不重要，只要保证所有图片都采用同样次序就行了。
 
-得到指纹以后，就可以对比不同的图片，看看64位中有多少位是不一样的。在理论上，这等同于计算**"汉明距离"（Hamming distance）**。如果不相同的数据位不超过5，就说明两张图片很相似；如果大于10，就说明这是两张不同的图片。
+得到指纹以后，就可以对比不同的图片，看看64位中有多少位是不一样的。在理论上，这等同于计算**汉明距离（Hamming distance）**。如果不相同的数据位不超过5，就说明两张图片很相似；如果大于10，就说明这是两张不同的图片。
 
 具体的代码实现，可以参见Wote用python语言写的[imgHash.py](http://www.ruanyifeng.com/blog/2011/07/imgHash.txt)。代码很短，只有53行。使用的时候，第一个参数是基准图片，第二个参数是用来比较的其他图片所在的目录，返回结果是两张图片之间不相同的数据位数量（汉明距离）。
 
 这种算法的优点是简单快速，不受图片大小缩放的影响，缺点是图片的内容不能变更。如果在图片上加几个文字，它就认不出来了。所以，它的最佳用途是根据缩略图，找出原图。
 
-代码参考[ImagePHash.java](https://github.com/nivance/image-similarity/blob/master/src/main/java/image/similarityImagePHash.java)
+代码可参考本项目[ImagePHash.java](https://github.com/nivance/image-similarity/blob/master/src/main/java/image/similarityImagePHash.java)。
 
 实际应用中，往往采用更强大的[pHash](http://www.phash.org/)算法和SIFT算法，它们能够识别图片的变形。只要变形程度不超过25%，它们就能匹配原图。这些算法虽然更复杂，但是原理与上面的简便算法是一样的，就是先将图片转化成Hash字符串，然后再进行比较。
 
@@ -34,11 +34,11 @@
 
 * 第二步：巴氏系数计算，计算公式如下：![](http://chart.googleapis.com/chart?cht=tx&chl=%5Crho%20(p%2C%20p%27)%3D%20%5Csum_%7Bi%3D1%7D%5EN%20%5Csqrt%7Bp(i)p%27(i)%7D)。其中p, p’分别代表源与候选的图像直方图数据，对每个相同i的数据点乘积开平方以后相加得出的结果即为图像相似度值（巴氏系数因子值），范围为0到1之间。
 
-代码参考[ImageHistogram.java](https://github.com/nivance/image-similarity/blob/master/src/main/java/image/similarity/ImageHistogram.java)
+代码可参考本项目[ImageHistogram.java](https://github.com/nivance/image-similarity/blob/master/src/main/java/image/similarity/ImageHistogram.java)。
 
 
 参考资料：
-* 1. [图像相似度算法--SIFT算法详解](http://blog.csdn.net/jiutianhe/article/details/39896931)
-* 2. [相似图片搜索的原理](http://www.ruanyifeng.com/blog/2011/07/principle_of_similar_image_search.html)
-* 3. [相似图片搜索的原理（二）](http://www.ruanyifeng.com/blog/2013/03/similar_image_search_part_ii.html)
-* 4. [图像处理之相似图片识别（直方图应用篇）](http://blog.csdn.net/jia20003/article/details/7771651)
+* 1.[图像相似度算法--SIFT算法详解](http://blog.csdn.net/jiutianhe/article/details/39896931)
+* 2.[相似图片搜索的原理](http://www.ruanyifeng.com/blog/2011/07/principle_of_similar_image_search.html)
+* 3.[相似图片搜索的原理（二）](http://www.ruanyifeng.com/blog/2013/03/similar_image_search_part_ii.html)
+* 4.[图像处理之相似图片识别（直方图应用篇）](http://blog.csdn.net/jia20003/article/details/7771651)
