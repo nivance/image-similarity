@@ -1,6 +1,7 @@
 # ImageSimilarity
-计算图片相似度的应用很广泛，如google、baidu、360等搜索引擎以图搜图的功能就是其典型应用。
+计算图片相似度的应用很广泛，如google、baidu、360等搜索引擎以图搜图的功能就是其典型应用。下面介绍介绍两种算法：
 
+---
 ### 感知哈希算法（Perceptual hash algorithm）
 
 那这种技术的原理是什么呢？根据Neal Krawetz博士的解释，原理非常简单易懂。我们可以用一个快速算法，就达到基本的效果。这里的关键技术叫做**感知哈希算法（Perceptual hash algorithm）**，它的作用是对每张图片生成一个"指纹"（fingerprint）字符串，然后比较不同图片的指纹。结果越接近，就说明图片越相似。下面是一个最简单的实现：
@@ -19,9 +20,9 @@
 
 代码可参考本项目[ImagePHash.java](https://github.com/nivance/image-similarity/blob/master/src/main/java/image/similarityImagePHash.java)。
 
-实际应用中，往往采用更强大的[pHash](http://www.phash.org/)算法和SIFT算法，它们能够识别图片的变形。只要变形程度不超过25%，它们就能匹配原图。这些算法虽然更复杂，但是原理与上面的简便算法是一样的，就是先将图片转化成Hash字符串，然后再进行比较。
+实际应用中，往往采用更强大的[pHash](http://www.phash.org/)算法和[SIFT](https://en.wikipedia.org/wiki/Scale-invariant_feature_transform)算法，它们能够识别图片的变形。只要变形程度不超过25%，它们就能匹配原图。这些算法虽然更复杂，但是原理与上面的简便算法是一样的，就是先将图片转化成Hash字符串，然后再进行比较。
 
-
+---
 ### 直方图
 直方图算法是对源图像与要筛选的图像进行直方图数据采集，对采集的各自图像直方图进行归一化再使用巴氏系数算法对直方图数据进行计算，最终得出图像相似度值，其值范围在[0, 1]之间0表示极其不同，1表示极其相似（相同）。
 
@@ -36,7 +37,7 @@
 
 代码可参考本项目[ImageHistogram.java](https://github.com/nivance/image-similarity/blob/master/src/main/java/image/similarity/ImageHistogram.java)。
 
-
+---
 参考资料：
 * 1.[图像相似度算法--SIFT算法详解](http://blog.csdn.net/jiutianhe/article/details/39896931)
 * 2.[相似图片搜索的原理](http://www.ruanyifeng.com/blog/2011/07/principle_of_similar_image_search.html)
