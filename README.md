@@ -37,9 +37,13 @@
 
 代码可参考本项目[ImageHistogram.java](https://github.com/nivance/image-similarity/blob/master/src/main/java/image/similarity/ImageHistogram.java)。
 
+--- 
+本项目的两种算法因为都存在一定的误判，所以可以两种方法结合在一起使用，提高准确率。
+
+
 ---
 参考资料：
-* 1.[图像相似度算法--SIFT算法详解](http://blog.csdn.net/jiutianhe/article/details/39896931)
-* 2.[相似图片搜索的原理](http://www.ruanyifeng.com/blog/2011/07/principle_of_similar_image_search.html)
-* 3.[相似图片搜索的原理（二）](http://www.ruanyifeng.com/blog/2013/03/similar_image_search_part_ii.html)
-* 4.[图像处理之相似图片识别（直方图应用篇）](http://blog.csdn.net/jia20003/article/details/7771651)
+* [图像相似度算法--SIFT算法详解](http://blog.csdn.net/jiutianhe/article/details/39896931)
+* [相似图片搜索的原理](http://www.ruanyifeng.com/blog/2011/07/principle_of_similar_image_search.html)
+* [相似图片搜索的原理（二）](http://www.ruanyifeng.com/blog/2013/03/similar_image_search_part_ii.html)
+* [图像处理之相似图片识别（直方图应用篇）](http://blog.csdn.net/jia20003/article/details/7771651)
