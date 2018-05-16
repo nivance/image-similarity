@@ -18,7 +18,7 @@
 
 这种算法的优点是简单快速，不受图片大小缩放的影响，缺点是图片的内容不能变更。如果在图片上加几个文字，它就认不出来了。所以，它的最佳用途是根据缩略图，找出原图。
 
-代码可参考本项目[ImagePHash.java](https://github.com/nivance/image-similarity/blob/master/src/main/java/image/similarityImagePHash.java)。
+代码可参考本项目[ImagePHash.java](https://github.com/nivance/image-similarity/blob/master/src/main/java/image/similarity/ImagePHash.java)。
 
 实际应用中，往往采用更强大的[pHash](http://www.phash.org/)算法和[SIFT](https://en.wikipedia.org/wiki/Scale-invariant_feature_transform)算法，它们能够识别图片的变形。只要变形程度不超过25%，它们就能匹配原图。这些算法虽然更复杂，但是原理与上面的简便算法是一样的，就是先将图片转化成Hash字符串，然后再进行比较。
 
